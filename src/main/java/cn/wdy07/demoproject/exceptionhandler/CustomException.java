@@ -1,7 +1,7 @@
 package cn.wdy07.demoproject.exceptionhandler;
 
 /**
- * @author wdy0707
+ * @author wdy070743
  * @create 2020-03-07 11:23
  */
 public class CustomException extends RuntimeException{
