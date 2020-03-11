@@ -19,7 +19,7 @@
     </properties>
 
     <dependencies>
-        <dependency>
+        <dependency><!--引入了SpringMVC+Tomcat-->
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>
