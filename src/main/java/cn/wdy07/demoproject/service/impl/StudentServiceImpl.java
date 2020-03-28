@@ -2,9 +2,13 @@ package cn.wdy07.demoproject.service.impl;
 
 import cn.wdy07.demoproject.dao.StudentMapper;
 import cn.wdy07.demoproject.entity.Student;
+import cn.wdy07.demoproject.listener.MyEvent;
 import cn.wdy07.demoproject.service.api.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Service;
+
+import javax.annotation.Resource;
 
 /**
  * @author wdy
@@ -31,9 +35,18 @@ public class StudentServiceImpl implements StudentService {
         return studentMapper.insertSelective(record);
     }
 
+    @Autowired
+    private ApplicationContext applicationContext;
+
     @Override
     public Student selectByPrimaryKey(Integer stuId) {
-        return studentMapper.selectByPrimaryKey(stuId);
+
+        Student student = studentMapper.selectByPrimaryKey(stuId);
+        //发布自定义事件
+        MyEvent myEvent = new MyEvent(this, student);
+        applicationContext.publishEvent(myEvent);
+
+        return student;
     }
 
     @Override

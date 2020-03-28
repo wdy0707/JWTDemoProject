@@ -1,7 +1,6 @@
 package cn.wdy07.demoproject.exceptionhandler;
 
 import cn.wdy07.demoproject.result.CommonResult;
-import org.apache.commons.logging.LogFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -41,7 +40,7 @@ public class GlobalExceptionHandler {
     @ResponseBody
     public CommonResult exceptionHandler(HttpServletRequest req, NullPointerException e){
         logger.error("发生空指针异常！原因是:",e);
-        return CommonResult.error(CommonEnum.BODY_NOT_MATCH);
+        return CommonResult.error("466","空指针");
     }
 
 
